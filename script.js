@@ -51,7 +51,7 @@ function fetchData(cat_name) {
 			        </div>`;
 	}).then(html => {
 		console.log(html);
-		document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
+		document.querySelector("#"+cat_name).insertAdjacentHTML("beforeend", html);
 
 	})
 	}})
@@ -61,6 +61,7 @@ function fetchData(cat_name) {
 };
 
 fetchData('action');
+fetchData('animation');
 
 
 /* Modal window */
