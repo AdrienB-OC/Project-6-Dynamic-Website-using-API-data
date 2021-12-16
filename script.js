@@ -1,3 +1,4 @@
+/* Fetch data from API */
 function fetchData(cat_name) {
 	fetch("http://localhost:8000/api/v1/titles/?genre=" + cat_name + "&sort_by=-imdb_score")
 	.then(response => {
@@ -50,7 +51,8 @@ function fetchData(cat_name) {
 			        </div>`;
 	}).then(html => {
 		console.log(html);
-		document.querySelector("#app").insertAdjacentHTML("beforeend", html);
+		document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
+
 	})
 	}})
 	.catch(error => {
@@ -60,6 +62,8 @@ function fetchData(cat_name) {
 
 fetchData('action');
 
+
+/* Modal window */
 document.addEventListener('click', function (e) {
     e = e || window.event;
     var target = e.target || e.srcElement;
