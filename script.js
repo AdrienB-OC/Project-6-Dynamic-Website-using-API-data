@@ -104,6 +104,8 @@ document.addEventListener('click', function (e) {
             var m_ID = target.getAttribute('data-target');
             var modal = document.getElementById(m_ID)
             modal.classList.add('bg-active');
+            document.body.style.overflow = "hidden";
+    		document.body.style.height = "100%";
             e.preventDefault();
         }
     }
@@ -112,27 +114,8 @@ document.addEventListener('click', function (e) {
     if ((target.hasAttribute('data-dismiss') && target.getAttribute('data-dismiss') == 'action-modal') || target.classList.contains('modal')) {
         var modal = document.querySelector('[class="modal-bg bg-active"]');
         modal.classList.remove('bg-active');
-        e.preventDefault();
-    }
-}, false);
-
-document.addEventListener('click', function (e) {
-    e = e || window.event;
-    var target = e.target || e.srcElement;
-
-    if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'animation-modal') {
-        if (target.hasAttribute('data-target')) {
-            var m_ID = target.getAttribute('data-target');
-            var modal = document.getElementById(m_ID)
-            modal.classList.add('bg-active');
-            e.preventDefault();
-        }
-    }
-
-    // Close modal window with 'data-dismiss' attribute or when the backdrop is clicked
-    if ((target.hasAttribute('data-dismiss') && target.getAttribute('data-dismiss') == 'animation-modal') || target.classList.contains('modal')) {
-        var modal = document.querySelector('[class="modal-bg bg-active"]');
-        modal.classList.remove('bg-active');
+        document.body.style.overflow = "auto";
+    	document.body.style.height = "auto";
         e.preventDefault();
     }
 }, false);
