@@ -1,14 +1,12 @@
 /* Fetch data from API */
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
 async function fetch_data(cat_name) {
-	const response = await fetch("http://localhost:8000/api/v1/titles/?genre=" + cat_name + "&sort_by=-imdb_score");
+	if (cat_name == 'best'){
+		url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score";
+	}
+	else{
+		url = "http://localhost:8000/api/v1/titles/?genre=" + cat_name + "&sort_by=-imdb_score";
+	};	
+	const response = await fetch(url);
 	const r_json = await response.json();
 	const links = await r_json.results.map(movie => {
 		return movie.url;
@@ -39,7 +37,13 @@ async function fetch_data(cat_name) {
 		document.querySelector("#"+cat_name).insertAdjacentHTML("beforeend", html);	        	
 
 	}
-	const response_2 = await fetch("http://localhost:8000/api/v1/titles/?genre=" + cat_name + "&page=2&sort_by=-imdb_score");
+	if (cat_name == 'best'){
+		url_2 = "http://localhost:8000/api/v1/titles/?page=2&sort_by=-imdb_score";
+	}
+	else{
+		url_2 = "http://localhost:8000/api/v1/titles/?genre=" + cat_name + "&page=2&sort_by=-imdb_score";
+	};
+	const response_2 = await fetch(url_2);
 	const r_json_2 = await response_2.json();
 	const links_2 = await r_json_2.results.map(movie2 => {
 		return movie2.url;
@@ -47,7 +51,7 @@ async function fetch_data(cat_name) {
 	for (let i = 0; i < 2; i++) {
 		const response_2 = await fetch(links_2[i]);
 		const data_2 = await response_2.json();
-		const html_2 = `<button class="modal-btn"><img data-target="${cat_name}${i}" data-toggle="action-modal" src="${data_2.image_url}"></button>
+		const html_2 = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" src="${data_2.image_url}"></button>
 
 			        <div id="${cat_name}${i+5}" class="modal-bg">
 			            <div class="modal">
@@ -72,7 +76,7 @@ async function fetch_data(cat_name) {
 	}
 }
 
-
+fetch_data('best');
 fetch_data('action');
 fetch_data('animation');
 fetch_data('sci-fi');
