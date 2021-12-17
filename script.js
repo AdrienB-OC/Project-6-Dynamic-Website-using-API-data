@@ -14,21 +14,27 @@ async function fetch_data(cat_name) {
 	for (let i = 0; i < 5; i++) {
 		const response = await fetch(links[i]);
 		const data = await response.json();
+		const countries = await data.countries.join(', ');
+		const actors = await data.actors.join(', ');
+		const genres = await data.genres.join('/');
+		const directors = await data.directors.join(', ');
 		const html = `<button class="modal-btn"><img data-target="${cat_name}${i}" data-toggle="action-modal" src="${data.image_url}"></button>
 
 			        <div id="${cat_name}${i}" class="modal-bg">
 			            <div class="modal">
 			                <div class="movie">
-			                    <img src="${data.image_url}">
-			                    <p><span class="cat-name">Title :</span> ${data.title}</p>
-			                    <p><span class="cat-name">Genre :</span> ${data.genres}</p>
-			                    <p><span class="cat-name">Country :</span> ${data.countries}</p>
-			                    <p><span class="cat-name">Duration :</span> ${data.duration}</p>
-			                    <p><span class="cat-name">Score :</span> ${data.imdb_score}</p>
-			                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
-			                    <p><span class="cat-name">Actors :</span> ${data.actors}</p>
-			                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
-			                    <p><span class="cat-name">Description :</span> ${data.long_description}</p>
+			                	<span class="title">${data.title}<br/></span>
+			                	<span class="genre"> ${genres} | ${countries}<br/></span>
+			                    <img class="modal-img" src="${data.image_url}">
+			                    <div class="modal-content">
+				                    <p><span class="cat-name">Directors :</span> ${directors}</p>
+				                    <p><span class="cat-name">Duration :</span> ${data.duration}</p>
+				                    <p><span class="cat-name">Score :</span> ${data.imdb_score}</p>
+				                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
+				                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
+				                    <p><span class="cat-name">Actors :</span> ${actors}</p>
+				                    <p><span class="cat-name">Description :</span> ${data.long_description}</p>
+				                </div>
 			                    <span data-dismiss="action-modal" class="modal-close">X</span>
 			                </div>
 			          </div>
@@ -49,29 +55,35 @@ async function fetch_data(cat_name) {
 		return movie2.url;
 	})
 	for (let i = 0; i < 2; i++) {
-		const response_2 = await fetch(links_2[i]);
-		const data_2 = await response_2.json();
-		const html_2 = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" src="${data_2.image_url}"></button>
+		const response = await fetch(links_2[i]);
+		const data = await response.json();
+		const countries = await data.countries.join(', ');
+		const actors = await data.actors.join(', ');
+		const genres = await data.genres.join('/');
+		const directors = await data.directors.join(', ');
+		const html = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" src="${data.image_url}"></button>
 
 			        <div id="${cat_name}${i+5}" class="modal-bg">
 			            <div class="modal">
 			                <div class="movie">
-			                    <img src="${data_2.image_url}">
-			                    <p><span class="cat-name">Title :</span> ${data_2.title}</p>
-			                    <p><span class="cat-name">Genre :</span> ${data_2.genres}</p>
-			                    <p><span class="cat-name">Country :</span> ${data_2.countries}</p>
-			                    <p><span class="cat-name">Duration :</span> ${data_2.duration}</p>
-			                    <p><span class="cat-name">Score :</span> ${data_2.imdb_score}</p>
-			                    <p><span class="cat-name">Rated :</span> ${data_2.rated}</p>
-			                    <p><span class="cat-name">Actors :</span> ${data_2.actors}</p>
-			                    <p><span class="cat-name">Grossing (USD):</span> ${data_2.worldwide_gross_income}</p>
-			                    <p><span class="cat-name">Description :</span> ${data_2.long_description}</p>
+			                <span class="title">${data.title}<br/></span>
+			                	<span class="genre"> ${genres} | ${countries}<br/></span>
+			                    <img class="modal-img" src="${data.image_url}">
+			                    <div class="modal-content">
+				                    <p><span class="cat-name">Directors :</span> ${directors}</p>
+				                    <p><span class="cat-name">Duration :</span> ${data.duration}</p>
+				                    <p><span class="cat-name">Score :</span> ${data.imdb_score}</p>
+				                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
+				                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
+				                    <p><span class="cat-name">Actors :</span> ${actors}</p>
+				                    <p><span class="cat-name">Description :</span> ${data.long_description}</p>
+				                </div>
 			                    <span data-dismiss="action-modal" class="modal-close">X</span>
 			                </div>
 			          </div>
 			        </div>`;
 
-		document.querySelector("#"+cat_name).insertAdjacentHTML("beforeend", html_2);	        	
+		document.querySelector("#"+cat_name).insertAdjacentHTML("beforeend", html);	        	
 
 	}
 }
