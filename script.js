@@ -1,3 +1,18 @@
+/*function scroll_cat(){
+
+
+   buttonRight = document.getElementById('right-scroll-button');
+    buttonLeft = document.getElementById('left-scroll-button');
+    console.log(buttonRight);
+    buttonRight.onclick = function () {
+      document.getElementById('best').scrollLeft += 300;
+    };
+    buttonLeft.onclick = function () {
+      document.getElementById('best').scrollLeft -= 300;
+    };
+}
+
+scroll_cat();*/
 /* Fetch data from API */
 async function fetch_data(cat_name) {
 	if (cat_name == 'best'){
@@ -18,18 +33,18 @@ async function fetch_data(cat_name) {
 		const actors = await data.actors.join(', ');
 		const genres = await data.genres.join('/');
 		const directors = await data.directors.join(', ');
-		const html = `<button class="modal-btn"><img data-target="${cat_name}${i}" data-toggle="action-modal" src="${data.image_url}"></button>
+		const html = `<button class="modal-btn"><img data-target="${cat_name}${i}" data-toggle="action-modal" src="${data.image_url}"></button>`;
 
-			        <div id="${cat_name}${i}" class="modal-bg">
+		const html_b =	`<div id="${cat_name}${i}" class="modal-bg">
 			            <div class="modal">
 			                <div class="movie">
 			                	<span class="title">${data.title}<br/></span>
 			                	<span class="genre"> ${genres} | ${countries}<br/></span>
 			                    <img class="modal-img" src="${data.image_url}">
 			                    <div class="modal-content">
-				                    <p><span class="cat-name">Directors :</span> ${directors}</p>
-				                    <p><span class="cat-name">Duration :</span> ${data.duration}</p>
-				                    <p><span class="cat-name">Score :</span> ${data.imdb_score}</p>
+				                    <p><span class="cat-name">Director(s) :</span> ${directors}</p>
+				                    <p><span class="cat-name">Duration :</span> ${data.duration}min</p>
+				                    <p><span class="cat-name">IMDb Score :</span> ${data.imdb_score}</p>
 				                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
 				                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
 				                    <p><span class="cat-name">Actors :</span> ${actors}</p>
@@ -40,7 +55,8 @@ async function fetch_data(cat_name) {
 			          </div>
 			        </div>`;
 
-		document.querySelector("#"+cat_name).insertAdjacentHTML("beforeend", html);	        	
+		document.querySelector("#"+cat_name+"-img").insertAdjacentHTML("beforeend", html);	 
+		document.querySelector("#"+cat_name).insertAdjacentHTML("beforeend", html_b);       	
 
 	}
 	if (cat_name == 'best'){
@@ -61,18 +77,18 @@ async function fetch_data(cat_name) {
 		const actors = await data.actors.join(', ');
 		const genres = await data.genres.join('/');
 		const directors = await data.directors.join(', ');
-		const html = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" src="${data.image_url}"></button>
+		const html = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" src="${data.image_url}"></button>`;
 
-			        <div id="${cat_name}${i+5}" class="modal-bg">
+		const html_b =	`<div id="${cat_name}${i+5}" class="modal-bg">
 			            <div class="modal">
 			                <div class="movie">
 			                <span class="title">${data.title}<br/></span>
 			                	<span class="genre"> ${genres} | ${countries}<br/></span>
 			                    <img class="modal-img" src="${data.image_url}">
 			                    <div class="modal-content">
-				                    <p><span class="cat-name">Directors :</span> ${directors}</p>
-				                    <p><span class="cat-name">Duration :</span> ${data.duration}</p>
-				                    <p><span class="cat-name">Score :</span> ${data.imdb_score}</p>
+				                    <p><span class="cat-name">Director(s) :</span> ${directors}</p>
+				                    <p><span class="cat-name">Duration :</span> ${data.duration}min</p>
+				                    <p><span class="cat-name">IMDb Score :</span> ${data.imdb_score}</p>
 				                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
 				                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
 				                    <p><span class="cat-name">Actors :</span> ${actors}</p>
@@ -83,7 +99,8 @@ async function fetch_data(cat_name) {
 			          </div>
 			        </div>`;
 
-		document.querySelector("#"+cat_name).insertAdjacentHTML("beforeend", html);	        	
+		document.querySelector("#"+cat_name+"-img").insertAdjacentHTML("beforeend", html);	 
+		document.querySelector("#"+cat_name).insertAdjacentHTML("beforeend", html_b); 	        	
 
 	}
 }
