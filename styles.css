@@ -3,8 +3,10 @@ p span
     font-weight: bold;
 }
 
+body {
+    background-color: #fff;
+}
 * {
-background-color: #fff;
 color: black;
 }
 
@@ -46,6 +48,7 @@ text-align: center;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s;
     z-index: 951;
+
 }
 
 .bg-active{
@@ -86,16 +89,26 @@ text-align: center;
     height: auto;
     padding: 15px 15px;
     z-index: 954;
+    border: solid 2px black;
+    border-radius: 5px;
+    background-color: #fff;
 }
 
 .modal-btn{
     cursor: pointer;
     border: none;
+    background-color: #fff;
 }
 .modal-btn:hover{
  opacity: 0.8;
-
 }
+.top-modal-btn{
+    background-color: rgba(255, 255, 255, 0.5);
+    border: solid 2px darkgrey;
+    font-size: 1.5em;
+    padding-right: 0.5em;
+ }
+
 .jacket{
     border: solid 2px black;
     border-radius: 5px;
@@ -155,6 +168,7 @@ text-align: center;
 
 }
 
+
 .left-scroll {
 
     left: 0;
@@ -201,8 +215,6 @@ text-align: center;
     color: white;
 }
 
-
-
 .hide-scroll{
     visibility: hidden;
 }
@@ -210,28 +222,21 @@ text-align: center;
 .img-top{
     float: left;
     padding-right: 15px;
+    padding-left: 5px;
 }
 
 #top-movie{
+
     height: auto;
     min-height: 390px;
     width: 80%;
-    margin: 0 auto;
-    border: solid 5px black;
+    margin: -2em auto 0 auto;
+    border: solid 5px rgba(222, 222, 222, 1);
     border-radius: 10px;
-
-
+    background-color: rgba(222, 222, 222, 1);
 }
 
-.top-movie-content{
-
-}
-
-.top-movie-content p{
-
-}
 .best{
-
     display: block;
     margin-top: -1em;
 }
@@ -239,14 +244,19 @@ text-align: center;
 .top-title{
     font-size: 3.3em;
     font-weight: bold;
-
 }
 
-.top-genre{
 
-
-}
-
-.img-top{
-
+@media screen and (max-width: 1200px) {
+    .control-container {
+    width: 98%;
+    }
+    .container {
+    width: 98%;
+    }
+    #top-movie{
+    height: auto;
+    min-height: 390px;
+    width: 95%;
+    }
 }

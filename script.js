@@ -103,7 +103,7 @@ async function fetch_top_movie(){
 		const genres = await data.genres.join('/');
 		const directors = await data.directors.join(', ');
 
-		const html = `<button class="modal-btn" data-target="top-modal" data-toggle="action-modal" class="top-jacket"> More info </button>`;
+		const html = `<button class="modal-btn top-modal-btn" data-target="top-modal" data-toggle="action-modal" class="top-jacket"> ⓘ More info</button>`;
 		const html_b =	`<span class="top-title">${data.title}</span>
 		                	<span class="top-genre"> (${genres} | ${countries})<br/></span>
 			                    <img class="img-top" src="${data.image_url}">
