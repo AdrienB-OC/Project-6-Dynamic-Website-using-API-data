@@ -11,10 +11,17 @@ color: white;
 h2 {
 font-weight: bold;
 font-size: 2.5em;
+margin-left: 6%;
 }
+
+
 
 .cat-name{
     font-size: 1.3em;
+}
+.cat-name2{
+    clear: left;
+    display: block;
 }
 
 .modal-bg {
@@ -42,7 +49,7 @@ font-size: 2.5em;
     position:  relative;
     background-color: white;
     width: 70%;
-    height: 85%;
+    height: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -58,9 +65,9 @@ font-size: 2.5em;
     position: absolute;
     top: 15px;
     right: 15px;
-    font-weight: bold;
     cursor: pointer;
-    border: solid 2px;
+
+    font-size: 1.5em;
 }
 .modal-close:hover{
     color: red;
@@ -69,7 +76,7 @@ font-size: 2.5em;
 .movie{
     position: fixed;
     width: 70%;
-    height: 85%;
+    height: auto;
     padding: 15px 15px;
     z-index: 954;
 
@@ -106,19 +113,18 @@ font-size: 2.5em;
 
 .movie-cat {
     white-space: nowrap;
-    flex-flow: row nowrap;
-    justify-content: space-between;
+    flex-flow: row nowrap;  
     overflow: hidden;
     display: flex;
-    align-self: left;
     scroll-behavior: smooth;
     margin-top: 11px;
+    column-gap: 5px;
 }
 
 .control-container {
     height: 300px;
     position: absolute;
-    width: 80%;
+    width: 90%;
     overflow: hidden;
     box-sizing: border-box;
     visibility: visible;
@@ -128,12 +134,14 @@ font-size: 2.5em;
     margin-top: -3em;
     height: 300px;
     position: relative;
-    width: auto;
+    width: 90%;
+    max-width: 1474px;
     box-sizing: border-box;
     overflow: hidden;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: left;
+    justify-content: center;
+    padding-left: 4%;
 
 }
 
@@ -143,6 +151,7 @@ font-size: 2.5em;
 
 .right-scroll {
     right: 0;
+
 }
 .scroll {
     position: absolute;
