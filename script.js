@@ -90,10 +90,36 @@ async function fetch_data(cat_name) {
 	}
 }
 
+async function fetch_top_movie(){
+	const response = await fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score");
+	const r_json = await response.json();
+	const link = await r_json.results.map(movie => {
+		return movie.url;
+	})
+	const response2 = await fetch(link[0]);
+	const data = await response2.json();
+		const countries = await data.countries.join(', ');
+		const actors = await data.actors.join(', ');
+		const genres = await data.genres.join('/');
+		const directors = await data.directors.join(', ');
+
+
+		const html_b =	`<span class="top-title">${data.title}</span>
+		                	<span class="top-genre"> (${genres} | ${countries})<br/></span>
+			                    <img class="img-top" src="${data.image_url}">
+			                    <div class="top-movie-content">
+				                    <p><span class="best">Description :</span> ${data.long_description}</p>
+				                </div>`;
+
+	 
+		document.querySelector("#top-movie").insertAdjacentHTML("beforeend", html_b);
+}
+
 fetch_data('best');
 fetch_data('action');
 fetch_data('animation');
 fetch_data('sci-fi');
+fetch_top_movie();
 
 
 /* Modal window */
@@ -112,7 +138,6 @@ document.addEventListener('click', function (e) {
         }
     }
 
-    // Close modal window with 'data-dismiss' attribute or when the backdrop is clicked
     if ((target.hasAttribute('data-dismiss') && target.getAttribute('data-dismiss') == 'action-modal') || target.classList.contains('modal')) {
         var modal = document.querySelector('[class="modal-bg bg-active"]');
         modal.classList.remove('bg-active');
@@ -122,8 +147,8 @@ document.addEventListener('click', function (e) {
     }
 }, false);
 
-/*Scroll functons */
 
+/*Scroll functions */
 function scroll_cat(){
    buttonRight = document.getElementById('right-scroll-button');
     buttonLeft = document.getElementById('left-scroll-button');

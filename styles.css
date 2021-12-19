@@ -14,6 +14,11 @@ font-size: 2.5em;
 margin-left: 6%;
 }
 
+h1 {
+font-weight: bold;
+font-size: 3em;
+margin-left: 6%;
+}
 
 
 .cat-name{
@@ -195,5 +200,44 @@ margin-left: 6%;
     visibility: hidden;
 }
 
+.img-top{
+    float: left;
+    padding-right: 15px;
+}
 
+#top-movie{
+    height: auto;
+    min-height: 390px;
+    width: 80%;
+    margin-left: 6%;
+    background-color: black;
+    margin-top: -2em;
+}
 
+.top-movie-content{
+    background-color: black;
+}
+
+.top-movie-content p{
+    background-color: black;
+}
+.best{
+    background-color: black;
+    display: block;
+    margin-top: -1em;
+}
+
+.top-title{
+    font-size: 3.3em;
+    font-weight: bold;
+    background-color: black;
+}
+
+.top-genre{
+
+    background-color: black;
+}
+
+.img-top{
+    background-color: black;
+}
