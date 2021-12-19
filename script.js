@@ -18,7 +18,7 @@ async function fetch_data(cat_name) {
 		const actors = await data.actors.join(', ');
 		const genres = await data.genres.join('/');
 		const directors = await data.directors.join(', ');
-		const html = `<button class="modal-btn"><img data-target="${cat_name}${i}" data-toggle="action-modal" src="${data.image_url}"></button>`;
+		const html = `<button class="modal-btn"><img data-target="${cat_name}${i}" data-toggle="action-modal" class="jacket" src="${data.image_url}"></button>`;
 
 		const html_b =	`<div id="${cat_name}${i}" class="modal-bg">
 			            <div class="modal">
@@ -62,7 +62,7 @@ async function fetch_data(cat_name) {
 		const actors = await data.actors.join(', ');
 		const genres = await data.genres.join('/');
 		const directors = await data.directors.join(', ');
-		const html = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" src="${data.image_url}"></button>`;
+		const html = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" class="jacket" src="${data.image_url}"></button>`;
 
 		const html_b =	`<div id="${cat_name}${i+5}" class="modal-bg">
 			            <div class="modal">
@@ -103,16 +103,37 @@ async function fetch_top_movie(){
 		const genres = await data.genres.join('/');
 		const directors = await data.directors.join(', ');
 
-
+		const html = `<button class="modal-btn" data-target="top-modal" data-toggle="action-modal" class="top-jacket"> More info </button>`;
 		const html_b =	`<span class="top-title">${data.title}</span>
 		                	<span class="top-genre"> (${genres} | ${countries})<br/></span>
 			                    <img class="img-top" src="${data.image_url}">
 			                    <div class="top-movie-content">
 				                    <p><span class="best">Description :</span> ${data.long_description}</p>
 				                </div>`;
+		const html_c =	`<div id="top-modal" class="modal-bg">
+			            <div class="modal">
+			                <div class="movie">
+			                <span class="title">${data.title}<br/></span>
+			                	<span class="genre"> ${genres} | ${countries}<br/></span>
+			                    <img class="modal-img" src="${data.image_url}">
+			                    <div class="modal-content">
+				                    <p><span class="cat-name">Director(s) :</span> ${directors}</p>
+				                    <p><span class="cat-name">Duration :</span> ${data.duration}min</p>
+				                    <p><span class="cat-name">IMDb Score :</span> ${data.imdb_score}</p>
+				                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
+				                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
+				                    <p><span class="cat-name2">Actors :</span> ${actors}</p>
+				                    <p><span class="cat-name2">Description :</span> ${data.long_description}</p>
+				                </div>
+			                    <span data-dismiss="action-modal" class="modal-close">X</span>
+			                </div>
+			          </div>
+			        </div>`;
 
 	 
 		document.querySelector("#top-movie").insertAdjacentHTML("beforeend", html_b);
+		document.querySelector("#top-movie").insertAdjacentHTML("beforeend", html);
+		document.querySelector("#top-movie-modal").insertAdjacentHTML("beforeend", html_c);
 }
 
 fetch_data('best');
@@ -150,7 +171,7 @@ document.addEventListener('click', function (e) {
 
 /*Scroll functions */
 function scroll_cat(){
-   buttonRight = document.getElementById('right-scroll-button');
+    buttonRight = document.getElementById('right-scroll-button');
     buttonLeft = document.getElementById('left-scroll-button');
     console.log(buttonRight);
     buttonRight.onclick = function () {
@@ -162,36 +183,36 @@ function scroll_cat(){
     ;
 }
 function scroll_cat2(){
-   buttonRight = document.getElementById('right-scroll-button2');
+    buttonRight = document.getElementById('right-scroll-button2');
     buttonLeft = document.getElementById('left-scroll-button2');
     console.log(buttonRight);
     buttonRight.onclick = function () {
-      document.getElementById('action-img').scrollLeft += 300;
+		document.getElementById('action-img').scrollLeft += 300;
     };
     buttonLeft.onclick = function () {
-      document.getElementById('action-img').scrollLeft -= 300;
+    	document.getElementById('action-img').scrollLeft -= 300;
     };
 }
 function scroll_cat3(){
-   buttonRight = document.getElementById('right-scroll-button3');
+    buttonRight = document.getElementById('right-scroll-button3');
     buttonLeft = document.getElementById('left-scroll-button3');
     console.log(buttonRight);
     buttonRight.onclick = function () {
-      document.getElementById('animation-img').scrollLeft += 300;
+    	document.getElementById('animation-img').scrollLeft += 300;
     };
     buttonLeft.onclick = function () {
-      document.getElementById('animation-img').scrollLeft -= 300;
+    	document.getElementById('animation-img').scrollLeft -= 300;
     };
 }
 function scroll_cat4(){
-   buttonRight = document.getElementById('right-scroll-button4');
+    buttonRight = document.getElementById('right-scroll-button4');
     buttonLeft = document.getElementById('left-scroll-button4');
     console.log(buttonRight);
     buttonRight.onclick = function () {
-      document.getElementById('sci-fi-img').scrollLeft += 300;
+    	document.getElementById('sci-fi-img').scrollLeft += 300;
     };
     buttonLeft.onclick = function () {
-      document.getElementById('sci-fi-img').scrollLeft -= 300;
+    	document.getElementById('sci-fi-img').scrollLeft -= 300;
     };
 }
 

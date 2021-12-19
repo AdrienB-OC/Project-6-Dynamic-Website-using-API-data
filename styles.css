@@ -4,20 +4,23 @@ p span
 }
 
 * {
-background-color: #20201E;
-color: white;
+background-color: #fff;
+color: black;
 }
 
 h2 {
 font-weight: bold;
 font-size: 2.5em;
-margin-left: 6%;
+text-align: center;
+
+
 }
 
 h1 {
 font-weight: bold;
 font-size: 3em;
-margin-left: 6%;
+text-align: center;
+
 }
 
 
@@ -62,7 +65,6 @@ margin-left: 6%;
     overflow-y:  auto;
     overflow-x:  hidden;
     padding: 0 15px 0 15px;
-
 }
 
 
@@ -84,15 +86,21 @@ margin-left: 6%;
     height: auto;
     padding: 15px 15px;
     z-index: 954;
-
 }
 
 .modal-btn{
     cursor: pointer;
+    border: none;
 }
 .modal-btn:hover{
  opacity: 0.8;
+
 }
+.jacket{
+    border: solid 2px black;
+    border-radius: 5px;
+}
+
 
 .modal-img{
     float: left;
@@ -109,12 +117,6 @@ margin-left: 6%;
     font-size: 1.2em;
 }
 
-.movie-cat {
-    margin-top: -2em;
-}
-
-
-
 
 .movie-cat {
     white-space: nowrap;
@@ -124,6 +126,8 @@ margin-left: 6%;
     scroll-behavior: smooth;
     margin-top: 11px;
     column-gap: 5px;
+    align-items: center;
+
 }
 
 .control-container {
@@ -136,7 +140,7 @@ margin-left: 6%;
 }
 .container {
     user-select: none;
-    margin-top: -3em;
+
     height: 300px;
     position: relative;
     width: 90%;
@@ -146,16 +150,18 @@ margin-left: 6%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    padding-left: 4%;
+
+    margin: -2em auto 0 auto;
 
 }
 
 .left-scroll {
-    
-}
 
+    left: 0;
+}
 .right-scroll {
     right: 0;
+
 
 }
 .scroll {
@@ -171,7 +177,7 @@ margin-left: 6%;
 .button {
     position: absolute;
     color: #f6f6f6;
-    font-size: 30px;
+    font-size: 50px;
     font-weight: bold;
     text-align: center;
     cursor:  pointer;
@@ -190,8 +196,9 @@ margin-left: 6%;
 .scroll-btn{
     padding-bottom: 0.2em;
     background-color: rgba(0, 0, 0, 0);
-    font-size: 1.5em;
+    font-size: 1em;
     text-shadow: 2px 0 2px #000, -2px 0 2px #000, 0 2px 2px #000, 0 -2px 2px #000, 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000;
+    color: white;
 }
 
 
@@ -209,20 +216,22 @@ margin-left: 6%;
     height: auto;
     min-height: 390px;
     width: 80%;
-    margin-left: 6%;
-    background-color: black;
-    margin-top: -2em;
+    margin: 0 auto;
+    border: solid 5px black;
+    border-radius: 10px;
+
+
 }
 
 .top-movie-content{
-    background-color: black;
+
 }
 
 .top-movie-content p{
-    background-color: black;
+
 }
 .best{
-    background-color: black;
+
     display: block;
     margin-top: -1em;
 }
@@ -230,14 +239,14 @@ margin-left: 6%;
 .top-title{
     font-size: 3.3em;
     font-weight: bold;
-    background-color: black;
+
 }
 
 .top-genre{
 
-    background-color: black;
+
 }
 
 .img-top{
-    background-color: black;
+
 }
