@@ -1,18 +1,3 @@
-/*function scroll_cat(){
-
-
-   buttonRight = document.getElementById('right-scroll-button');
-    buttonLeft = document.getElementById('left-scroll-button');
-    console.log(buttonRight);
-    buttonRight.onclick = function () {
-      document.getElementById('best').scrollLeft += 300;
-    };
-    buttonLeft.onclick = function () {
-      document.getElementById('best').scrollLeft -= 300;
-    };
-}
-
-scroll_cat();*/
 /* Fetch data from API */
 async function fetch_data(cat_name) {
 	if (cat_name == 'best'){
@@ -119,7 +104,7 @@ document.addEventListener('click', function (e) {
     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'action-modal') {
         if (target.hasAttribute('data-target')) {
             var m_ID = target.getAttribute('data-target');
-            var modal = document.getElementById(m_ID)
+            var modal = document.getElementById(m_ID);
             modal.classList.add('bg-active');
             document.body.style.overflow = "hidden";
     		document.body.style.height = "100%";
@@ -137,6 +122,56 @@ document.addEventListener('click', function (e) {
     }
 }, false);
 
+/*Scroll functons */
+function scroll_cat(){
+   buttonRight = document.getElementById('right-scroll-button');
+    buttonLeft = document.getElementById('left-scroll-button');
+    console.log(buttonRight);
+    buttonRight.onclick = function () {
+      document.getElementById('best-img').scrollLeft += 300;
+    };
+    buttonLeft.onclick = function () {
+      document.getElementById('best-img').scrollLeft -= 300;
+    };
+}
+function scroll_cat2(){
+   buttonRight = document.getElementById('right-scroll-button2');
+    buttonLeft = document.getElementById('left-scroll-button2');
+    console.log(buttonRight);
+    buttonRight.onclick = function () {
+      document.getElementById('action-img').scrollLeft += 300;
+    };
+    buttonLeft.onclick = function () {
+      document.getElementById('action-img').scrollLeft -= 300;
+    };
+}
+function scroll_cat3(){
+   buttonRight = document.getElementById('right-scroll-button3');
+    buttonLeft = document.getElementById('left-scroll-button3');
+    console.log(buttonRight);
+    buttonRight.onclick = function () {
+      document.getElementById('animation-img').scrollLeft += 300;
+    };
+    buttonLeft.onclick = function () {
+      document.getElementById('animation-img').scrollLeft -= 300;
+    };
+}
+function scroll_cat4(){
+   buttonRight = document.getElementById('right-scroll-button4');
+    buttonLeft = document.getElementById('left-scroll-button4');
+    console.log(buttonRight);
+    buttonRight.onclick = function () {
+      document.getElementById('sci-fi-img').scrollLeft += 300;
+    };
+    buttonLeft.onclick = function () {
+      document.getElementById('sci-fi-img').scrollLeft -= 300;
+    };
+}
+
+scroll_cat();
+scroll_cat2();
+scroll_cat3();
+scroll_cat4();
 
 /*function fetchData(cat_name) {
 	fetch("http://localhost:8000/api/v1/titles/?genre=" + cat_name + "&sort_by=-imdb_score")
