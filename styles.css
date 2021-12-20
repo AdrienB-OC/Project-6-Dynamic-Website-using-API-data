@@ -34,6 +34,7 @@ color: #E50914;
     display: block;
 }
 
+/* Modal */
 .modal-bg {
     position: fixed;
     width: 100%;
@@ -113,12 +114,13 @@ color: #E50914;
     border-radius: 5px;
 }
 
-
+/* Inside modal*/
 .modal-img{
     float: left;
     padding-right: 15px;
     padding-top: 1.2em;
 }
+
 
 .title {
     font-size: 3em;
@@ -141,6 +143,7 @@ color: #E50914;
 
 }
 
+/* Scrolling container*/
 .container {
     user-select: none;
     height: 300px;
@@ -219,8 +222,8 @@ color: #E50914;
     padding-left: 5px;
 }
 
+/* Best movie section */
 #top-movie{
-
     height: auto;
     min-height: 390px;
     width: 80%;
@@ -240,7 +243,91 @@ color: #E50914;
     font-weight: bold;
 }
 
-@media screen and (max-width: 1200px) {
+
+/* menu */
+nav{
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    position: sticky;
+    top: 0px;
+}
+
+nav ul{
+    list-style-type: none;
+    width: 70%;
+   display: table;
+   text-align: center;
+}
+
+nav ul li{
+    float: left;
+    width: 25%;
+    text-align: center;
+    position: relative;
+
+}
+
+nav ul::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0px;
+
+}
+
+nav a:hover{
+    color: red;
+    border-bottom: 2px solid red;
+}
+
+.sous{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: rgba(255,255,255,1);
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+nav > ul li:hover .sous{
+    display: block;
+}
+.sous li{
+    float: none;
+    width: 100%;
+    text-align: left;
+}
+.sous a{
+    padding: 10px;
+    border-bottom: none;
+
+}
+.sous a:hover{
+    border-bottom: none;
+
+    margin-right: 10%;
+}
+.deroulant > a::after{
+    content:" ▼";
+    font-size: 12px;
+}
+
+#site-name:hover{
+    color: default;
+    border: none;
+
+}
+
+
+/* Mobile */
+@media screen and (max-width: 1000px) {
     .control-container {
     width: 98%;
     }
@@ -251,5 +338,8 @@ color: #E50914;
     height: auto;
     min-height: 390px;
     width: 95%;
+    }
+    nav ul{
+        width: 100%;
     }
 }

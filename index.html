@@ -3,15 +3,29 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="styles.css" />
-        <title>Test JS</title>
+        <title>JustStreamIt</title>
     </head>
 
     <body>
-        <h2>Top Rated Movie</h2>
+        <nav>
+            <ul>
+                <li><a href="#top-title" id="site-name">JustStreamIt</a></li>
+                <li><a href="#top-title">Accueil</a></li>
+                <li class="deroulant"><a href="#">Catégorie</a>
+                    <ul class="sous">
+                        <li><a href="#top-titles">Top rated movies</a></li>
+                        <li><a href="#action-title">Action</a></li>
+                        <li><a href="#animation-title">Animation</a></li>
+                        <li><a href="#sci-fi-title">Sci-Fi</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <h2 id="top-title">Top Rated Movie</h2>
         <div id="top-movie"></div>
         <div id="top-movie-modal"></div>
 
-        <h2>Top Rated Movies</h2>
+        <h2 id="top-titles">Top Rated Movies</h2>
         <div class="container">
             <div class="control-container">
                 <div id="left-scroll-button" class="left-scroll button scroll">
@@ -25,7 +39,7 @@
         </div>
         <div id="best"></div>
 
-        <h2> Action </h2>
+        <h2 id="action-title"> Action </h2>
         <div class="container">
             <div class="control-container">
                 <div id="left-scroll-button2" class="left-scroll button scroll">
@@ -39,7 +53,7 @@
         </div>
         <div id="action"></div>
 
-        <h2> Animation </h2>
+        <h2 id="animation-title"> Animation </h2>
         <div class="container">
             <div class="control-container">
                 <div id="left-scroll-button3" class="left-scroll button scroll">
@@ -53,7 +67,7 @@
         </div>
         <div id="animation"></div>
 
-        <h2> Sci-Fi </h2>
+        <h2 id="sci-fi-title"> Sci-Fi </h2>
         <div class="container">
             <div class="control-container">
                 <div id="left-scroll-button4" class="left-scroll button scroll">
