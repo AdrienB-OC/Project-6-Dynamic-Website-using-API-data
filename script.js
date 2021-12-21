@@ -220,3 +220,15 @@ scroll_cat();
 scroll_cat2();
 scroll_cat3();
 scroll_cat4();
+
+
+/* Menu */
+let dropdownBtn = document.querySelector('.deroulant');
+let menuContent = document.querySelector('.myDropdown');
+dropdownBtn.addEventListener('click',()=>{
+   if(menuContent.style.visibility==="hidden"){
+      menuContent.style.visibility="visible";
+   } else {
+      menuContent.style.visibility="hidden";
+   }
+})

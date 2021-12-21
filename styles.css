@@ -15,14 +15,14 @@ h2 {
 font-weight: bold;
 font-size: 2.5em;
 text-align: center;
-color: #E50914;
+color: black;
 }
 
 h1 {
 font-weight: bold;
 font-size: 3em;
 text-align: center;
-color: #E50914;
+color: black;
 }
 
 
@@ -88,7 +88,7 @@ color: #E50914;
     height: auto;
     padding: 15px 15px;
     z-index: 954;
-    border: solid 2px black;
+    border: solid 1px black;
     border-radius: 5px;
     background-color: #fff;
 }
@@ -102,19 +102,12 @@ color: #E50914;
  opacity: 0.8;
 }
 
-.top-modal-btn{
-    background-color: rgba(255, 255, 255, 0.5);
-    border: solid 2px darkgrey;
-    font-size: 1.5em;
-    padding-right: 0.5em;
- }
-
 .jacket{
     border: solid 2px black;
     border-radius: 5px;
 }
 
-/* Inside modal*/
+/* Modal Content*/
 .modal-img{
     float: left;
     padding-right: 15px;
@@ -226,8 +219,7 @@ color: #E50914;
 #top-movie{
     height: auto;
     min-height: 390px;
-    width: 80%;
-    margin: -2em auto 0 auto;
+    margin: -2em 5% 0 5%;
     border: solid 5px rgba(222, 222, 222, 1);
     border-radius: 10px;
     background-color: rgba(222, 222, 222, 1);
@@ -237,6 +229,13 @@ color: #E50914;
     display: block;
     margin-top: -1em;
 }
+
+.top-modal-btn{
+    background-color: rgba(255, 255, 255, 0.5);
+    border: solid 2px darkgrey;
+    font-size: 1.5em;
+    padding-right: 0.5em;
+ }
 
 .top-title{
     font-size: 3.3em;
@@ -249,7 +248,7 @@ nav{
     width: 100%;
     margin: 0 auto;
     background-color: white;
-    position: sticky;
+    position: relative;
     top: 0px;
 }
 
@@ -265,6 +264,7 @@ nav ul li{
     width: 25%;
     text-align: center;
     position: relative;
+    max-width: 300px;
 
 }
 
@@ -287,15 +287,18 @@ nav a:hover{
     color: red;
     border-bottom: 2px solid red;
 }
-
+.myDropdown{
+    background-color: white;
+}
 .sous{
-    display: none;
+    visibility: hidden;
     box-shadow: 0px 1px 2px #CCC;
     background-color: rgba(255,255,255,1);
     position: absolute;
     width: 100%;
     z-index: 1000;
 }
+
 nav > ul li:hover .sous{
     display: block;
 }
@@ -308,6 +311,9 @@ nav > ul li:hover .sous{
     padding: 10px;
     border-bottom: none;
 
+}
+.show {
+    display: block;
 }
 .sous a:hover{
     border-bottom: none;
@@ -342,4 +348,10 @@ nav > ul li:hover .sous{
     nav ul{
         width: 100%;
     }
+    #top-movie{
+        width: 99%;
+        margin: 0;
+    }
 }
+
+

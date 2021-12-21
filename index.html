@@ -9,18 +9,21 @@
     <body>
         <nav>
             <ul>
-                <li><a href="#top-title" id="site-name">JustStreamIt</a></li>
-                <li><a href="#top-title">Accueil</a></li>
+                <li><a href="#site-name" id="site-name">JustStreamIt</a></li>
+                <li><a href="#site-name">Accueil</a></li>
                 <li class="deroulant"><a href="#">Catégorie</a>
                     <ul class="sous">
-                        <li><a href="#top-titles">Top rated movies</a></li>
-                        <li><a href="#action-title">Action</a></li>
-                        <li><a href="#animation-title">Animation</a></li>
-                        <li><a href="#sci-fi-title">Sci-Fi</a></li>
+                        <div class="myDropdown" >
+                        <li class="dropdown-content"><a href="#top-titles">Top rated movies</a></li>
+                        <li class="dropdown-content"><a href="#action-title">Action</a></li>
+                        <li class="dropdown-content"><a href="#animation-title">Animation</a></li>
+                        <li class="dropdown-content"><a href="#sci-fi-title">Sci-Fi</a></li>
+                    </div>
                     </ul>
                 </li>
             </ul>
         </nav>
+        
         <h2 id="top-title">Top Rated Movie</h2>
         <div id="top-movie"></div>
         <div id="top-movie-modal"></div>
