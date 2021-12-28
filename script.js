@@ -6,18 +6,25 @@ async function fetch_data(cat_name) {
 	else{
 		url = "http://localhost:8000/api/v1/titles/?genre=" + cat_name + "&sort_by=-imdb_score";
 	};	
-	const response = await fetch(url);
-	const r_json = await response.json();
-	const links = await r_json.results.map(movie => {
+	try{
+	var response = await fetch(url);
+	var r_json = await response.json();
+	var links = r_json.results.map(movie => {
 		return movie.url;
 	})
+	}
+	catch(Error) {
+		const error = `<div class="api-error"><p>Error: can't retrieve API data. Please try again later</p></div>`	
+		document.querySelector("#"+cat_name+"-img").insertAdjacentHTML("beforeend", error);
+	}
+	
 	for (let i = 0; i < 5; i++) {
-		const response = await fetch(links[i]);
-		const data = await response.json();
-		const countries = await data.countries.join(', ');
-		const actors = await data.actors.join(', ');
-		const genres = await data.genres.join('/');
-		const directors = await data.directors.join(', ');
+		let response = await fetch(links[i]);
+		let data = await response.json();
+		let countries = data.countries.join(', ');
+		let actors = data.actors.join(', ');
+		let genres = data.genres.join('/');
+		let directors = data.directors.join(', ');
 		const html = `<button class="modal-btn"><img data-target="${cat_name}${i}" data-toggle="action-modal" class="jacket" src="${data.image_url}"></button>`;
 
 		const html_b =	`<div id="${cat_name}${i}" class="modal-bg">
@@ -50,18 +57,18 @@ async function fetch_data(cat_name) {
 	else{
 		url_2 = "http://localhost:8000/api/v1/titles/?genre=" + cat_name + "&page=2&sort_by=-imdb_score";
 	};
-	const response_2 = await fetch(url_2);
-	const r_json_2 = await response_2.json();
-	const links_2 = await r_json_2.results.map(movie2 => {
+	let response_2 = await fetch(url_2);
+	let r_json_2 = await response_2.json();
+	let links_2 = r_json_2.results.map(movie2 => {
 		return movie2.url;
 	})
 	for (let i = 0; i < 2; i++) {
-		const response = await fetch(links_2[i]);
-		const data = await response.json();
-		const countries = await data.countries.join(', ');
-		const actors = await data.actors.join(', ');
-		const genres = await data.genres.join('/');
-		const directors = await data.directors.join(', ');
+		let response = await fetch(links_2[i]);
+		let data = await response.json();
+		let countries = data.countries.join(', ');
+		let actors = data.actors.join(', ');
+		let genres = data.genres.join('/');
+		let directors = data.directors.join(', ');
 		const html = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" class="jacket" src="${data.image_url}"></button>`;
 
 		const html_b =	`<div id="${cat_name}${i+5}" class="modal-bg">
@@ -91,49 +98,56 @@ async function fetch_data(cat_name) {
 }
 
 async function fetch_top_movie(){
-	const response = await fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score");
-	const r_json = await response.json();
-	const link = await r_json.results.map(movie => {
+	try{
+	var response = await fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score");
+	var r_json = await response.json();
+	var link = await r_json.results.map(movie => {
 		return movie.url;
 	})
-	const response2 = await fetch(link[0]);
-	const data = await response2.json();
-		const countries = await data.countries.join(', ');
-		const actors = await data.actors.join(', ');
-		const genres = await data.genres.join('/');
-		const directors = await data.directors.join(', ');
+	var response2 = await fetch(link[0]);
+	var data = await response2.json();
+	var countries = await data.countries.join(', ');
+	var actors = await data.actors.join(', ');
+	var genres = await data.genres.join('/');
+	var directors = await data.directors.join(', ');
+	}
+	catch(Error) {
+		const error = `<div class="api-error"><p>Error: can't retrieve API data. Please try again later</p></div>`
+		document.querySelector("#top-movie").insertAdjacentHTML("beforeend", error);
+	}
+	
 
-		const html = `<button class="modal-btn top-modal-btn" data-target="top-modal" data-toggle="action-modal" class="top-jacket"> ⓘ More info</button>`;
-		const html_b =	`<span class="top-title">${data.title}</span>
-		                	<span class="top-genre"> (${genres} | ${countries})<br/></span>
-			                    <img class="img-top" src="${data.image_url}">
-			                    <div class="top-movie-content">
-				                    <p><span class="best">Description :</span> ${data.long_description}</p>
-				                </div>`;
-		const html_c =	`<div id="top-modal" class="modal-bg">
-			            <div class="modal">
-			                <div class="movie">
-			                <span class="title">${data.title}<br/></span>
-			                	<span class="genre"> ${genres} | ${countries}<br/></span>
-			                    <img class="modal-img" src="${data.image_url}">
-			                    <div class="modal-content">
-				                    <p><span class="cat-name">Director(s) :</span> ${directors}</p>
-				                    <p><span class="cat-name">Duration :</span> ${data.duration}min</p>
-				                    <p><span class="cat-name">IMDb Score :</span> ${data.imdb_score}</p>
-				                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
-				                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
-				                    <p><span class="cat-name2">Actors :</span> ${actors}</p>
-				                    <p><span class="cat-name2">Description :</span> ${data.long_description}</p>
-				                </div>
-			                    <span data-dismiss="action-modal" class="modal-close">X</span>
+	const html = `<button class="modal-btn top-modal-btn" data-target="top-modal" data-toggle="action-modal" class="top-jacket"> ⓘ More info</button>`;
+	const html_b =	`<span class="top-title">${data.title}</span>
+	                	<span class="top-genre"> (${genres} | ${countries})<br/></span>
+		                    <img class="img-top" src="${data.image_url}">
+		                    <div class="top-movie-content">
+			                    <p><span class="best">Description :</span> ${data.long_description}</p>
+			                </div>`;
+	const html_c =	`<div id="top-modal" class="modal-bg">
+		            <div class="modal">
+		                <div class="movie">
+		                <span class="title">${data.title}<br/></span>
+		                	<span class="genre"> ${genres} | ${countries}<br/></span>
+		                    <img class="modal-img" src="${data.image_url}">
+		                    <div class="modal-content">
+			                    <p><span class="cat-name">Director(s) :</span> ${directors}</p>
+			                    <p><span class="cat-name">Duration :</span> ${data.duration}min</p>
+			                    <p><span class="cat-name">IMDb Score :</span> ${data.imdb_score}</p>
+			                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
+			                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
+			                    <p><span class="cat-name2">Actors :</span> ${actors}</p>
+			                    <p><span class="cat-name2">Description :</span> ${data.long_description}</p>
 			                </div>
-			          </div>
-			        </div>`;
+		                    <span data-dismiss="action-modal" class="modal-close">X</span>
+		                </div>
+		          </div>
+		        </div>`;
 
-	 
-		document.querySelector("#top-movie").insertAdjacentHTML("beforeend", html_b);
-		document.querySelector("#top-movie").insertAdjacentHTML("beforeend", html);
-		document.querySelector("#top-movie-modal").insertAdjacentHTML("beforeend", html_c);
+ 
+	document.querySelector("#top-movie").insertAdjacentHTML("beforeend", html_b);
+	document.querySelector("#top-movie").insertAdjacentHTML("beforeend", html);
+	document.querySelector("#top-movie-modal").insertAdjacentHTML("beforeend", html_c);
 }
 
 fetch_data('best');
@@ -232,3 +246,9 @@ dropdownBtn.addEventListener('click',()=>{
       menuContent.style.visibility="hidden";
    }
 })
+
+window.addEventListener('click', function(e){   
+  if (!document.querySelector('.sous').contains(e.target) && !document.querySelector('.deroulant').contains(e.target)){
+    menuContent.style.visibility="hidden"
+  }
+});

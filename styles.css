@@ -5,24 +5,26 @@ p span
 
 body {
     background-color: #fff;
+    font-family:  Verdana, Tahoma, Garamond, Georgia, sans-serif; 
 }
 
 * {
-color: black;
+    color: black;
 }
 
 h2 {
-font-weight: bold;
-font-size: 2.5em;
-text-align: center;
-color: black;
+    font-weight: bold;
+    font-size: 2.5em;
+    text-align: left;
+    margin-left: 5%;
+    color: #a61b1b;
 }
 
 h1 {
-font-weight: bold;
-font-size: 3em;
-text-align: center;
-color: black;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    color: black;
 }
 
 
@@ -99,12 +101,13 @@ color: black;
     background-color: #fff;
 }
 .modal-btn:hover{
- opacity: 0.8;
+    opacity: 0.8;
 }
 
 .jacket{
     border: solid 2px black;
     border-radius: 5px;
+
 }
 
 /* Modal Content*/
@@ -118,10 +121,13 @@ color: black;
 .title {
     font-size: 3em;
     font-weight: bold;
+    color: #a61b1b;
+    font-family: candara;
 }
 
 .genre {
     font-size: 1.2em;
+    font-style: italic;
 }
 
 .movie-cat {
@@ -133,13 +139,13 @@ color: black;
     margin-top: 11px;
     column-gap: 5px;
     align-items: center;
-
+    color: darkblue;
 }
 
 /* Scrolling container*/
 .container {
     user-select: none;
-    height: 300px;
+    height: 284px;
     position: relative;
     width: 90%;
     max-width: 1350px;
@@ -147,8 +153,10 @@ color: black;
     overflow: hidden;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
     margin: -2em auto 0 auto;
+    margin-left: 5%;
+    box-shadow: 15px 15px 20px -10px rgba(0,0,0,1);  
+    border-radius: 5px;  
 }
 
 .control-container {
@@ -220,11 +228,15 @@ color: black;
     height: auto;
     min-height: 390px;
     margin: -2em 5% 0 5%;
-    border: solid 5px rgba(222, 222, 222, 1);
     border-radius: 10px;
     background-color: rgba(222, 222, 222, 1);
+    padding: 0.5%;
+    padding-top: 0;
 }
 
+.top-genre{
+    font-style: italic;
+}
 .best{
     display: block;
     margin-top: -1em;
@@ -240,6 +252,8 @@ color: black;
 .top-title{
     font-size: 3.3em;
     font-weight: bold;
+    color: black;
+    font-family: candara;
 }
 
 
@@ -326,24 +340,29 @@ nav > ul li:hover .sous{
 }
 
 #site-name:hover{
-    color: default;
     border: none;
-
 }
 
+/* Error message */
+.api-error p{
+    color: red;
+    font-size: 2em;
+
+}
 
 /* Mobile */
 @media screen and (max-width: 1000px) {
     .control-container {
-    width: 98%;
+        width: 98%;
     }
     .container {
-    width: 98%;
+        width: 98%;
+        margin-left: 2%;
     }
     #top-movie{
-    height: auto;
-    min-height: 390px;
-    width: 95%;
+        height: auto;
+        min-height: 390px;
+        width: 95%;
     }
     nav ul{
         width: 100%;
@@ -351,6 +370,9 @@ nav > ul li:hover .sous{
     #top-movie{
         width: 99%;
         margin: 0;
+    }
+    h2 {
+        margin-left: 2%;
     }
 }
 
