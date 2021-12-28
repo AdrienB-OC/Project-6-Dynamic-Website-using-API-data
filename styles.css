@@ -121,7 +121,7 @@ h1 {
 .title {
     font-size: 3em;
     font-weight: bold;
-    color: #a61b1b;
+    color: #c92222;
     font-family: candara;
 }
 
@@ -198,7 +198,7 @@ h1 {
     height: 48px;
     z-index: 950;
     transition: all 0.3s ease-in-out;
-    opacity: 0.7;
+    opacity: 1;
     background-color: rgba(0, 0, 0, 0)
 }
 .button:hover{
@@ -209,8 +209,9 @@ h1 {
     padding-bottom: 0.2em;
     background-color: rgba(0, 0, 0, 0);
     font-size: 1em;
-    text-shadow: 2px 0 2px #000, -2px 0 2px #000, 0 2px 2px #000, 0 -2px 2px #000, 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000;
+    text-shadow: 2px 2px 2px #a61b1b, -2px 0 2px #a61b1b, 0 2px 2px #a61b1b, 0 -2px 2px #a61b1b, 1px 1px 2px #a61b1b, -1px -1px 2px #a61b1b, 1px -1px 2px #a61b1b, -1px 1px 2px #a61b1b;
     color: white;
+
 }
 
 .hide-scroll{
@@ -252,7 +253,7 @@ h1 {
 .top-title{
     font-size: 3.3em;
     font-weight: bold;
-    color: black;
+    color: #c92222;
     font-family: candara;
 }
 
@@ -373,6 +374,9 @@ nav > ul li:hover .sous{
     }
     h2 {
         margin-left: 2%;
+    }
+    .button{
+        opacity: 1;
     }
 }
 
