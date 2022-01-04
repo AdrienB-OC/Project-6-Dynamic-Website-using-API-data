@@ -14,7 +14,7 @@ async function fetch_data(cat_name) {
 	})
 	}
 	catch(Error) {
-		const error = `<div class="api-error"><p>Error: can't retrieve API data. Please try again later</p></div>`	
+		const error = `<div class="api-error"><p>We encountered an error, please try again later</p></div>`	
 		document.querySelector("#"+cat_name+"-img").insertAdjacentHTML("beforeend", error);
 	}
 	
@@ -25,7 +25,11 @@ async function fetch_data(cat_name) {
 		let actors = data.actors.join(', ');
 		let genres = data.genres.join('/');
 		let directors = data.directors.join(', ');
-		const html = `<button class="modal-btn"><img data-target="${cat_name}${i}" data-toggle="action-modal" class="jacket" src="${data.image_url}"></button>`;
+		let worldwide_gross = data.worldwide_gross_income;;
+		if (data.worldwide_gross_income == null){
+			worldwide_gross = '-';
+		}
+		const html = `<button class="modal-btn"><img data-target="${cat_name}${i}" data-toggle="action-modal" class="jacket" src="${data.image_url}" alt="Movie Jacket : ${data.title}" title="${data.title}"></button>`;
 
 		const html_b =	`<div id="${cat_name}${i}" class="modal-bg">
 			            <div class="modal">
@@ -38,7 +42,7 @@ async function fetch_data(cat_name) {
 				                    <p><span class="cat-name">Duration :</span> ${data.duration}min</p>
 				                    <p><span class="cat-name">IMDb Score :</span> ${data.imdb_score}</p>
 				                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
-				                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
+				                    <p><span class="cat-name">Grossing (USD):</span> ${worldwide_gross}</p>
 				                    <p><span class="cat-name2">Actors :</span> ${actors}</p>
 				                    <p><span class="cat-name2">Description :</span> ${data.long_description}</p>
 				                </div>
@@ -69,7 +73,11 @@ async function fetch_data(cat_name) {
 		let actors = data.actors.join(', ');
 		let genres = data.genres.join('/');
 		let directors = data.directors.join(', ');
-		const html = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" class="jacket" src="${data.image_url}"></button>`;
+		let worldwide_gross = data.worldwide_gross_income;;
+		if (data.worldwide_gross_income == null){
+			worldwide_gross = '-';
+		}
+		const html = `<button class="modal-btn"><img data-target="${cat_name}${i+5}" data-toggle="action-modal" class="jacket" src="${data.image_url}" alt="Movie Jacket : ${data.title}" title="${data.title}"></button>`;
 
 		const html_b =	`<div id="${cat_name}${i+5}" class="modal-bg">
 			            <div class="modal">
@@ -82,7 +90,7 @@ async function fetch_data(cat_name) {
 				                    <p><span class="cat-name">Duration :</span> ${data.duration}min</p>
 				                    <p><span class="cat-name">IMDb Score :</span> ${data.imdb_score}</p>
 				                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
-				                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
+				                    <p><span class="cat-name">Grossing (USD):</span> ${worldwide_gross}</p>
 				                    <p><span class="cat-name2">Actors :</span> ${actors}</p>
 				                    <p><span class="cat-name2">Description :</span> ${data.long_description}</p>
 				                </div>
@@ -104,23 +112,27 @@ async function fetch_top_movie(){
 	var link = await r_json.results.map(movie => {
 		return movie.url;
 	})
-	var response2 = await fetch(link[0]);
-	var data = await response2.json();
-	var countries = await data.countries.join(', ');
-	var actors = await data.actors.join(', ');
-	var genres = await data.genres.join('/');
-	var directors = await data.directors.join(', ');
 	}
 	catch(Error) {
-		const error = `<div class="api-error"><p>Error: can't retrieve API data. Please try again later</p></div>`
+		const error = `<div class="api-error"><p>We encountered an error, please try again later</p></div>`
 		document.querySelector("#top-movie").insertAdjacentHTML("beforeend", error);
 	}
+	let response2 = await fetch(link[0]);
+	let data = await response2.json();
+	let countries = await data.countries.join(', ');
+	let actors = await data.actors.join(', ');
+	let genres = await data.genres.join('/');
+	let directors = await data.directors.join(', ');
+	let worldwide_gross = data.worldwide_gross_income;
+		if (data.worldwide_gross_income == null){
+			worldwide_gross = '-';
+		}
 	
 
 	const html = `<button class="modal-btn top-modal-btn" data-target="top-modal" data-toggle="action-modal" class="top-jacket"> ⓘ More info</button>`;
 	const html_b =	`<span class="top-title">${data.title}</span>
 	                	<span class="top-genre"> (${genres} | ${countries})<br/></span>
-		                    <img class="img-top" src="${data.image_url}">
+		                    <img class="img-top" src="${data.image_url}" alt="Movie Jacket : ${data.title}" title="${data.title}">
 		                    <div class="top-movie-content">
 			                    <p><span class="best">Description :</span> ${data.long_description}</p>
 			                </div>`;
@@ -135,7 +147,7 @@ async function fetch_top_movie(){
 			                    <p><span class="cat-name">Duration :</span> ${data.duration}min</p>
 			                    <p><span class="cat-name">IMDb Score :</span> ${data.imdb_score}</p>
 			                    <p><span class="cat-name">Rated :</span> ${data.rated}</p>
-			                    <p><span class="cat-name">Grossing (USD):</span> ${data.worldwide_gross_income}</p>
+			                    <p><span class="cat-name">Grossing (USD):</span> ${worldwide_gross}</p>
 			                    <p><span class="cat-name2">Actors :</span> ${actors}</p>
 			                    <p><span class="cat-name2">Description :</span> ${data.long_description}</p>
 			                </div>
